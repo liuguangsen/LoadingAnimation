@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <declare-styleable name="CircularView">
+        <attr name="ringWidth" format="dimension"/>
+        <attr name="startAngle" format="integer"/>
+        <attr name="endAngle" format="integer"/>
+        <attr name="duation" format="integer"/>
+        <attr name="bottomColor" format="color"/>
+        <attr name="topColor" format="color"/>
+        <attr name="centerColor" format="color"/>
+        <attr name="textColor" format="color"/>
+    </declare-styleable>
+</resources>
