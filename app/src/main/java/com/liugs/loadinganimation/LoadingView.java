@@ -20,7 +20,7 @@ public class LoadingView extends View {
     private static final int CIRCLE_OUT_DEGREES_INTERVAL = 60;
     private static final int CIRCLE_OUT_COUNT = 6;
     private static final long DURATION = 3000;
-    private int[] colors = {Color.RED,Color.BLUE,Color.GREEN};
+    private int[] colors = {Color.RED, Color.BLUE, Color.GREEN};
     private int pointX;
     private int pointY;
     private int radius;
@@ -73,7 +73,7 @@ public class LoadingView extends View {
         if (outCircle == null) {
             outCircle = new OutCircle();
             outCircle.onDraw(canvas);
-            final ValueAnimator rotation = ValueAnimator.ofInt(0, 360);
+            final ValueAnimator rotation = ValueAnimator.ofInt(360, 0);
             rotation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
@@ -95,9 +95,8 @@ public class LoadingView extends View {
             animatorSet = new AnimatorSet();
             animatorSet.setInterpolator(new LinearInterpolator());
             animatorSet.setDuration(DURATION);
-            animatorSet.playTogether(rotation,scale);
-            animatorSet.start();
-        }else {
+            animatorSet.playTogether(rotation, scale);
+        } else {
             outCircle.onDraw(canvas);
         }
     }
@@ -105,8 +104,8 @@ public class LoadingView extends View {
     private void drawOutCircle(int argle, Canvas canvas) {
         double currentRadians = argle * Math.PI / 180;
         float currentX = (float) (pointX + Math.sin(currentRadians) * currentRadius);
-        float currentY  = (float) (pointY + Math.cos(currentRadians) * currentRadius);
-        canvas.drawCircle(currentX,currentY,CIRCLE_OUT_RADIUS,paint);
+        float currentY = (float) (pointY + Math.cos(currentRadians) * currentRadius);
+        canvas.drawCircle(currentX, currentY, CIRCLE_OUT_RADIUS, paint);
     }
 
     private void print(String msg) {
@@ -119,18 +118,20 @@ public class LoadingView extends View {
         super.onDetachedFromWindow();
     }
 
-    public void stopAnimatorSet(){
-        if (animatorSet != null){
+    public void stopAnimatorSet() {
+        if (animatorSet != null) {
             animatorSet.cancel();
             animatorSet = null;
         }
     }
 
     public void switchAnimatorSet() {
-        if (animatorSet != null){
-            if (animatorSet.isPaused()){
+        if (animatorSet != null) {
+            if (!animatorSet.isStarted()) {
+                animatorSet.start();
+            } else if (animatorSet.isPaused()) {
                 animatorSet.resume();
-            }else {
+            } else {
                 animatorSet.pause();
             }
         }
@@ -139,16 +140,16 @@ public class LoadingView extends View {
     /**
      * 画圆圈
      */
-    private class OutCircle{
+    private class OutCircle {
 
         OutCircle() {
         }
 
         private void onDraw(Canvas canvas) {
             for (int i = 0; i < CIRCLE_OUT_COUNT; i++) {
-                paint.setColor(colors[i%3]);
+                paint.setColor(colors[i % 3]);
                 drawOutCircle(currentAngle + i * CIRCLE_OUT_DEGREES_INTERVAL, canvas);
-           }
+            }
         }
     }
 }

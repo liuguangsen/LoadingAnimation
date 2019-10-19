@@ -4,14 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.liugs.loadinganimation.LoadingView
         android:id="@+id/loading"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:background="#A5A2A2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#A5A2A2" />
+
+    <ImageView
+        android:id="@+id/animation_drawable"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:stateListAnimator="@drawable/animate_scale"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
 </LinearLayout>
