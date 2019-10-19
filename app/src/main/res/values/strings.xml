@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">LoadingAnimation</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="a">属性和图形动画</string>
+    <string name="reveal_or_hide_a_view_using_animation">Reveal or hide a view using animation</string>
+    <string name="title_activity_hide_and_reveal">HideAndRevealActivity</string>
+    <string name="card_back_title">返回</string>
+    <string name="card_back_description">进入</string>
+    <string name="description_image_1">一直鸟</string>
+    <string name="create_a_card_flip_animation">Create a card flip animation</string>
+    <string name="create_a_circular_reveal_animation">Create a circular reveal animation</string>
 </resources>
